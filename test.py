@@ -3,7 +3,7 @@ import subprocess
 
 # Configura la repo
 FILENAME = "file.txt"    # File da modificare
-TOTAL_COMMITS = 10       # Numero di commit da fare
+TOTAL_COMMITS = 10000       # Numero di commit da fare
 
 # Assicurati che il file esista
 if not os.path.exists(FILENAME):
