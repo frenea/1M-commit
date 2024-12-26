@@ -1,31 +1,28 @@
 import os
 import subprocess
 
-# Configuration
-FILENAME = "file.txt"    # File to modify
-TOTAL_COMMITS = 10       # Number of commits to make
+# Configura la repo
+FILENAME = "file.txt"    # File da modificare
+TOTAL_COMMITS = 10       # Numero di commit da fare
 
-# Ensure the file exists
+# Assicurati che il file esista
 if not os.path.exists(FILENAME):
     with open(FILENAME, "w") as f:
-        f.write("Initial content\n")
+        f.write("Contenuto iniziale\n")
 
-# Initialize the Git repository in the current directory
-if not os.path.exists(".git"):
-    subprocess.run(["git", "init"])
-
-# Create or modify the file and commit it
+# Modifica e committa
 for i in range(1, TOTAL_COMMITS + 1):
-    # Append content to the file
+    # Modifica il file
     with open(FILENAME, "a") as f:
-        f.write(f"Change number {i}\n")
+        f.write(f"Modifica numero {i}\n")
 
-    # Stage the file
+    # Stage del file
     subprocess.run(["git", "add", FILENAME])
 
-    # Commit the change
+    # Commit
     subprocess.run(
-        ["git", "commit", "-m", f"Commit number {i}"]
+        ["git", "commit", "-m", f"Commit numero {i}"]
     )
 
-print(f"{TOTAL_COMMITS} commits made in the current directory.")
+# Push dei commit su GitHub
+subprocess.run(["git", "push", "origin", "main"])
